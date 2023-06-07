@@ -1,0 +1,71 @@
+.custom-input {
+    border: none;
+    border-radius: 50%;
+    color: transparent;
+    width: 100px;
+    height: 90px;
+    font-size: 80px;
+    text-align: center;
+    caret-color: transparent;
+    border-color: white;
+    outline: none;
+}
+
+.costum-table {
+    background-color: rgb(0, 174, 255);
+    position: absolute;
+    top: 35%;
+    left: 40%;
+    transform: translate(-40%, -40%);
+    width: 20%;
+    height: 20%;
+}
+
+.draw-Text {
+    position: absolute;
+    top: 46%;
+    right: 10%;
+    color: red;
+    font-size: 30px;
+    font-style: italic;
+}
+
+.btn-primary {
+    position: absolute;
+    bottom: 10%;
+    left: 44%;
+    transform: translateX(-50%);
+    width: 10%;
+    height: 7%;
+    font-style: italic;
+    font-size: 150%;
+    border-radius: 0;
+}
+
+.costum-firstPlayer {
+    color: red;
+    font-size: 30px;
+    font-style: italic;
+    position: absolute;
+    top: 82%;
+    left: 26%;
+    transform: translate(85%, 34%);
+}
+
+.costum-secondPlayer {
+    color: yellow;
+    font-size: 30px;
+    font-style: italic;
+    position: absolute;
+    top: 82%;
+    left: 53%;
+    transform: translate(85%, 34%);
+}
+
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
