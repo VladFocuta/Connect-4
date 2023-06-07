@@ -16,7 +16,7 @@ function addPlayers() {
 }
 
 function createTable() {
-    for (let i = 0; i < rows; i++) {
+    for (let i = 0; i < rows; ++i) {
         matrix[i] = new Array(cols);
     }
     let table = document.createElement("table");
@@ -126,7 +126,7 @@ function displayWinnerMessage(player) {
 }
 
 function isGameCompleted() {
-    for (let i = 0; i < cells.length; i++) {
+    for (let i = 0; i < cells.length; ++i) {
         if (cells[i].value === "") {
             return false;
         }
