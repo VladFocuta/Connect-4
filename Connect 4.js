@@ -1,14 +1,25 @@
 let winningMessage = document.getElementById("messagesContainer");
 let namesOfThePlayers = [];
 let cells = document.querySelectorAll('input.custom-input');
+let inputBar = document.getElementById("getNamesBar");
 
 function getPlayers() {
-    namesOfThePlayers = [prompt("Please enter the name of the first player: "), prompt("Please enter the name of the second player: ")];
+    let newPlayers = inputBar.value;
+    if (newPlayers !== "" && namesOfThePlayers.length < 2) {
+        namesOfThePlayers.push(newPlayers);
+        inputBar.value = "";
+        addPlayers();
+    }
 }
+
+inputBar.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        getPlayers();
+    }
+});
 
 function addPlayers() {
     let playersContainer = document.getElementById("playersContainer");
-    getPlayers();
     for (let i = 0; i < namesOfThePlayers.length; ++i) {
         let playerClass = i === 0 ? "costum-firstPlayer" : "costum-secondPlayer";
         playersContainer.innerHTML += `<div id="Player${i + 1}" class="${playerClass}">${namesOfThePlayers[i]}</div>`;
@@ -16,27 +27,30 @@ function addPlayers() {
 }
 
 function createTable() {
-    for (let i = 0; i < rows; ++i) {
-        matrix[i] = new Array(cols);
-    }
-    let table = document.createElement("table");
-    table.className = "costum-table";
-    for (let i = 0; i < rows; ++i) {
-        let row = document.createElement("tr");
-        for (let j = 0; j < cols; ++j) {
-            let cell = document.createElement("td");
-            cell.id = "cell-" + i + "-" + j;
-            let input = document.createElement("input");
-            input.type = "text";
-            input.className = "custom-input";
-            input.onclick = printXAndO;
-            cell.appendChild(input);
-            row.appendChild(cell);
+    if (namesOfThePlayers.length === 2) {
+        for (let i = 0; i < rows; ++i) {
+            matrix[i] = new Array(cols);
         }
-        table.appendChild(row);
+        let table = document.createElement("table");
+        table.className = "costum-table";
+        for (let i = 0; i < rows; ++i) {
+            let row = document.createElement("tr");
+            for (let j = 0; j < cols; ++j) {
+                let cell = document.createElement("td");
+                cell.id = "cell-" + i + "-" + j;
+                let input = document.createElement("input");
+                input.type = "text";
+                input.className = "custom-input";
+                input.onclick = printXAndO;
+                cell.appendChild(input);
+                row.appendChild(cell);
+            }
+            table.appendChild(row);
+        }
+        document.body.appendChild(table);
+        cells = document.querySelectorAll('input.custom-input');
+        disableFunctions();
     }
-    document.body.appendChild(table);
-    cells = document.querySelectorAll('input.custom-input');
 }
 
 let currentColor = "red";
@@ -133,3 +147,8 @@ function isGameCompleted() {
     }
     return true;
 }
+
+function disableFunctions() {
+    document.getElementById("startButton").disabled = true;
+    document.getElementById("getNamesBar").disabled = true;
+} 
