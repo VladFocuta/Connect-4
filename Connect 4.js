@@ -1,6 +1,6 @@
 let winningMessage = document.getElementById("messagesContainer");
 let namesOfThePlayers = [];
-let cells = document.querySelectorAll('input.custom-input');
+let cells = document.querySelectorAll('input.input-space');
 let inputBar = document.getElementById("getNamesBar");
 
 function getPlayers() {
@@ -21,7 +21,7 @@ inputBar.addEventListener("keydown", function (event) {
 function addPlayers() {
     let playersContainer = document.getElementById("playersContainer");
     for (let i = 0; i < namesOfThePlayers.length; ++i) {
-        let playerClass = i === 0 ? "costum-firstPlayer" : "costum-secondPlayer";
+        let playerClass = i === 0 ? "firstPlayer" : "secondPlayer";
         playersContainer.innerHTML += `<div id="Player${i + 1}" class="${playerClass}">${namesOfThePlayers[i]}</div>`;
     }
 }
@@ -32,7 +32,7 @@ function createTable() {
             matrix[i] = new Array(cols);
         }
         let table = document.createElement("table");
-        table.className = "costum-table";
+        table.className = "board";
         for (let i = 0; i < rows; ++i) {
             let row = document.createElement("tr");
             for (let j = 0; j < cols; ++j) {
@@ -40,7 +40,7 @@ function createTable() {
                 cell.id = "cell-" + i + "-" + j;
                 let input = document.createElement("input");
                 input.type = "text";
-                input.className = "custom-input";
+                input.className = "input-space";
                 input.onclick = printXAndO;
                 cell.appendChild(input);
                 row.appendChild(cell);
@@ -48,7 +48,7 @@ function createTable() {
             table.appendChild(row);
         }
         document.body.appendChild(table);
-        cells = document.querySelectorAll('input.custom-input');
+        cells = document.querySelectorAll('input.input-space');
         disableFunctions();
     }
 }
